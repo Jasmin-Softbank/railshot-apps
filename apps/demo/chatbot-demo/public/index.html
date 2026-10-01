@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>RAILSHOT · 챗봇 데모</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <main class="app">
+      <header>
+        <span class="brand">RAILSHOT / SAMPLE APP</span>
+        <h1>안녕하세요 👋</h1>
+        <p>배포 결과를 확인하기 위한 간단한 챗봇입니다.</p>
+      </header>
+
+      <section class="chat" aria-label="대화">
+        <div class="messages" id="messages" role="log" aria-live="polite">
+          <p class="bubble bot">안녕하세요! 배포에 관해 물어보세요.</p>
+        </div>
+        <form id="chat-form">
+          <label class="sr-only" for="message">메시지</label>
+          <input id="message" name="message" placeholder="메시지를 입력하세요" maxlength="500" autocomplete="off" required />
+          <button type="submit">보내기</button>
+        </form>
+        <p class="error" id="error" role="alert" hidden></p>
+      </section>
+      <footer>외부 AI·데이터베이스 없이 동작하는 배포 검증용 앱</footer>
+    </main>
+  </body>
+</html>
