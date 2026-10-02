@@ -19,6 +19,6 @@ curl -fsS http://127.0.0.1:8080/api/chat \
 
 ## RAILSHOT PoC
 
-`../jasmin-entrypoints-poc`의 대시보드에서 이 폴더를 선택하거나, MCP `deploy` 도구의 `source`에 이 폴더의 절대 경로를 전달한다. MCP의 로컬 경로 허용 범위(`JASMIN_SOURCE_ROOT`)에 이 폴더가 포함되어야 한다. 앱 이름은 폴더 이름에서 `chatbot-demo`로 자동 생성된다.
+`Railshot apps/dashboard`의 대시보드에서 이 폴더를 선택하거나, MCP `deploy` 도구의 `source`에 이 폴더의 절대 경로를 전달한다. MCP의 로컬 경로 허용 범위(`RAILSHOT_SOURCE_ROOT`)에 이 폴더가 포함되어야 한다. 앱 이름은 폴더 이름에서 `chatbot-demo`로 자동 생성된다.
 
 배포 성공은 Actions의 `loop`, `release`, `gitops`가 통과하고 반환된 URL에서 `/health`와 채팅 요청이 응답할 때 확인한다. 현재 진입점 PoC는 같은 앱 이름의 두 번째 배포를 거부한다.

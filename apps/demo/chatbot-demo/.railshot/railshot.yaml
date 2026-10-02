@@ -1,4 +1,4 @@
-apiVersion: jasmin/v0
+apiVersion: railshot/v0
 app: chatbot-demo
 services:
   - name: web
