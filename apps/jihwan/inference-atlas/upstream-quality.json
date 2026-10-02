@@ -1,0 +1,122 @@
+{
+  "checked_at": "2026-10-02T03:55:43.815095+00:00",
+  "checks": [
+    {
+      "details": {
+        "source_revision": "7493d10fcad47178e741c084951bba4aa0adc8e3",
+        "source_tree_sha256": "a9db83229c630562c08c1428df38aa32d19e6db38b5a1aa86743a4803e0a00ae",
+        "worktree_dirty": false
+      },
+      "name": "source-identity",
+      "seconds": 0.014,
+      "status": "passed"
+    },
+    {
+      "details": {
+        "dataset_id": "b8b901d67abe643c7c2a8d05472a39cbfaf36a80e364869ae0ecc82365a6a7b8",
+        "history_status": "baseline",
+        "records": 47,
+        "reviewed_demand_sources": 13,
+        "snapshot_sha256": "dc05908102a9609472776e5326085600fbcd607d7b6b0774b2e99115eda7832d"
+      },
+      "name": "frontend-research-data",
+      "seconds": 0.829,
+      "status": "passed"
+    },
+    {
+      "details": {},
+      "name": "frontend-source-tests",
+      "seconds": 0.545,
+      "status": "passed"
+    },
+    {
+      "details": {
+        "jobs": 44,
+        "node": "22.23.2",
+        "pages": 11,
+        "regions": 16,
+        "research_records": 47,
+        "snapshot_sha256": "ad5bf0d380f14257852cb89754615474c386a0eecd455fda9707a954a288da51"
+      },
+      "name": "frontend-environment",
+      "seconds": 2.353,
+      "status": "passed"
+    },
+    {
+      "details": {},
+      "name": "frontend-lint",
+      "seconds": 0.181,
+      "status": "passed"
+    },
+    {
+      "details": {},
+      "name": "frontend-test",
+      "seconds": 0.402,
+      "status": "passed"
+    },
+    {
+      "details": {},
+      "name": "frontend-typecheck",
+      "seconds": 0.463,
+      "status": "passed"
+    },
+    {
+      "details": {},
+      "name": "frontend-build",
+      "seconds": 1.122,
+      "status": "passed"
+    },
+    {
+      "details": {
+        "engine": "chromium",
+        "production_build": true,
+        "routes": 7
+      },
+      "name": "frontend-browser",
+      "seconds": 56.515,
+      "status": "passed"
+    },
+    {
+      "details": {
+        "deployment_performed": false,
+        "files": {
+          "assets/Atlas-DqkVdDpH.js": "0febf7bd0b654fc82ac9d973b9e962efc3bd9315ab88f194c5e970dae9cb6084",
+          "assets/Atlas-YUJLOd35.css": "535c66047a2cfd4caffaa5e6b6dddabfd6cc7ebfb32dd7d53db8a734d20f3a61",
+          "assets/Research-C_ahzoqb.css": "1ddd5bc039a327536b5edcf7f6a004c9a05531db302270241f51ee12d5101ec8",
+          "assets/Research-ncBpkMmb.js": "178b20e0def6263c84ed50c46624b1fd0da5aed75ca20defb0b3766cd0559aa1",
+          "assets/Shared-BytS71fY.js": "8e734f321edc8cce49a80524d5e7f11d9e34ced176a9fb9a6108a10179e79667",
+          "assets/Wiki-DgrSVkNC.js": "fd82fdb7aa9d2efd922f9f44b7c80f3b6e52755ad790c9fbe14d47ed92a38403",
+          "assets/index-CKQk3hex.css": "c3a3181d093c4ae6f2b04b1ce0f4e30215653a7925394c6b7219f3324b47e824",
+          "assets/index-DS78POyX.js": "c238f63f241e7351111d3b92712333942a1917c42ae7b1a4eb81d30f56af04e4",
+          "index.html": "e8da1346a41c10c5e4c5428eec176293093b24c9608a9aa2bc5597d19d98f229"
+        }
+      },
+      "name": "frontend-verified-bundle",
+      "seconds": 0.002,
+      "status": "passed"
+    },
+    {
+      "details": {
+        "unchanged": true
+      },
+      "name": "source-identity-unchanged",
+      "seconds": 0.01,
+      "status": "passed"
+    }
+  ],
+  "completed": true,
+  "no_deployment": true,
+  "no_registry_publish": true,
+  "npu_hardware": "not-run",
+  "python_optimization": 0,
+  "run_attempt": "1",
+  "run_id": "36962277972",
+  "schema_version": 2,
+  "scope": "Production frontend inputs, lint, types, build and Chromium; no live API.",
+  "source_revision": "7493d10fcad47178e741c084951bba4aa0adc8e3",
+  "source_tree_sha256": "a9db83229c630562c08c1428df38aa32d19e6db38b5a1aa86743a4803e0a00ae",
+  "status": "passed",
+  "target": "frontend",
+  "toolchain_sha256": "0ac9d16c111a77e8e7c6a9c8815cb5dc45ad5109d718b07566c3a7d6818752c2",
+  "worktree_dirty": false
+}

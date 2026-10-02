@@ -1,0 +1,14 @@
+**
+!package.json
+!package-lock.json
+!src/
+!src/app.js
+!src/server.js
+!dist/
+!dist/**
+.git
+**/.git
+.env*
+**/.env*
+.DS_Store
+**/.DS_Store

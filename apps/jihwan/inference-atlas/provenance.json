@@ -1,0 +1,17 @@
+{
+  "source_repo": "https://github.com/mangowhoiscloud/inference-atlas",
+  "source_revision": "7493d10fcad47178e741c084951bba4aa0adc8e3",
+  "quality_run": "https://github.com/mangowhoiscloud/inference-atlas/actions/runs/36962277972",
+  "scope": "Static React UI using reviewed JSON snapshots. No live API or database service.",
+  "bundle_files": {
+    "assets/Atlas-DqkVdDpH.js": "0febf7bd0b654fc82ac9d973b9e962efc3bd9315ab88f194c5e970dae9cb6084",
+    "assets/Atlas-YUJLOd35.css": "535c66047a2cfd4caffaa5e6b6dddabfd6cc7ebfb32dd7d53db8a734d20f3a61",
+    "assets/Research-C_ahzoqb.css": "1ddd5bc039a327536b5edcf7f6a004c9a05531db302270241f51ee12d5101ec8",
+    "assets/Research-ncBpkMmb.js": "178b20e0def6263c84ed50c46624b1fd0da5aed75ca20defb0b3766cd0559aa1",
+    "assets/Shared-BytS71fY.js": "8e734f321edc8cce49a80524d5e7f11d9e34ced176a9fb9a6108a10179e79667",
+    "assets/Wiki-DgrSVkNC.js": "fd82fdb7aa9d2efd922f9f44b7c80f3b6e52755ad790c9fbe14d47ed92a38403",
+    "assets/index-CKQk3hex.css": "c3a3181d093c4ae6f2b04b1ce0f4e30215653a7925394c6b7219f3324b47e824",
+    "assets/index-DS78POyX.js": "c238f63f241e7351111d3b92712333942a1917c42ae7b1a4eb81d30f56af04e4",
+    "index.html": "e8da1346a41c10c5e4c5428eec176293093b24c9608a9aa2bc5597d19d98f229"
+  }
+}
