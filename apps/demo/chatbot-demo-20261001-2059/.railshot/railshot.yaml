@@ -1,8 +1,0 @@
-apiVersion: railshot/v0
-app: chatbot-demo
-services:
-  - name: web
-    build: {dockerfile: Dockerfile}
-    port: 8080
-    health: /health
-    route: /
