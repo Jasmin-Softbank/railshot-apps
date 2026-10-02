@@ -1,0 +1,47 @@
+.wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #fefefe;
+}
+
+.app {
+  position: relative;
+  width: 20rem;
+  margin: auto;
+  background-color: var(--body-bg-color);
+  box-shadow: 1px 1px 5px 5px #efefef;
+}
+
+.header {
+  position: relative;
+  display: flex;
+  height: 4rem;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  z-index: 2;
+}
+
+.header__logo {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+  color: var(--body-font-color);
+}
+
+.header__history,
+.header__theme {
+  background-color: transparent;
+  border: none;
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  outline: none;
+}
+
+.header__theme:hover,
+.header__history:hover {
+  background-color: var(--btn-active-color);
+}
