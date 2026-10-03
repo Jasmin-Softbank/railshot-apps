@@ -44,7 +44,7 @@ jobs:
     steps:
       - name: Validate trusted platform bindings
         env:
-          PLATFORM_REF: 50b1128b6a649167eadc57e6651b5449f60352ef
+          PLATFORM_REF: 5aadda18d1d6ae60a3ab15dac45b33f28fb56ddc
           RUN_ROOT: ${{ vars.RAILSHOT_RUN_ROOT }}
         run: |
           [[ "$PLATFORM_REF" =~ ^[a-f0-9]{40}$ ]] || exit 1
@@ -60,7 +60,7 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with: {persist-credentials: false}
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with: {repository: Jasmin-Softbank/Railshot, ref: "50b1128b6a649167eadc57e6651b5449f60352ef", path: .railshot, persist-credentials: false}
+        with: {repository: Jasmin-Softbank/Railshot, ref: "5aadda18d1d6ae60a3ab15dac45b33f28fb56ddc", path: .railshot, persist-credentials: false}
       - name: Validate inputs
         env:
           CONFIGURED_TARGET: ${{ vars.RAILSHOT_TARGET_ID }}
@@ -79,7 +79,7 @@ jobs:
           PROVIDER: ${{ vars.AGENT_PROVIDER || 'codex' }}
           RAILSHOT_MAX_REPAIR_ATTEMPTS: ${{ vars.RAILSHOT_MAX_REPAIR_ATTEMPTS }}
           QUALITY_NETWORK: ${{ vars.QUALITY_NETWORK }}
-          REPAIR_SCOPE: ${{ vars.REPAIR_SCOPE || 'packaging' }}
+          REPAIR_SCOPE: ${{ vars.REPAIR_SCOPE || 'source' }}
           RAILSHOT_AUTH_MODE: ${{ vars.AGENT_AUTH_MODE }}
           RAILSHOT_CODEX_HOME: ${{ vars.RAILSHOT_CODEX_HOME }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -89,7 +89,7 @@ jobs:
           set -euo pipefail
           progress_token="$RAILSHOT_PROGRESS_TOKEN"
           unset RAILSHOT_PROGRESS_TOKEN
-          MAX_REPAIR_ATTEMPTS=${RAILSHOT_MAX_REPAIR_ATTEMPTS:-0}
+          MAX_REPAIR_ATTEMPTS=${RAILSHOT_MAX_REPAIR_ATTEMPTS:-2}
           [[ "$MAX_REPAIR_ATTEMPTS" =~ ^[0-3]$ ]] || { echo "RAILSHOT_MAX_REPAIR_ATTEMPTS must be 0, 1, 2 or 3"; exit 1; }
           [[ "$PROVIDER" = codex || "$PROVIDER" = claude ]] || { echo "AGENT_PROVIDER must be claude or codex"; exit 1; }
           test -f .railshot/ci/scripts/loop/checks_progress.py || { echo 'PLATFORM_REF must support isolated progress publishing'; exit 1; }
@@ -169,7 +169,7 @@ jobs:
     steps:
       - name: Validate trusted platform bindings
         env:
-          PLATFORM_REF: 50b1128b6a649167eadc57e6651b5449f60352ef
+          PLATFORM_REF: 5aadda18d1d6ae60a3ab15dac45b33f28fb56ddc
           GHCR_PULL_TOKEN: ${{ secrets.GHCR_PULL_TOKEN }}
         run: |
           [[ "$PLATFORM_REF" =~ ^[a-f0-9]{40}$ ]] || exit 1
@@ -204,7 +204,7 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with: {persist-credentials: false}
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with: {repository: Jasmin-Softbank/Railshot, ref: "50b1128b6a649167eadc57e6651b5449f60352ef", path: .railshot, persist-credentials: false}
+        with: {repository: Jasmin-Softbank/Railshot, ref: "5aadda18d1d6ae60a3ab15dac45b33f28fb56ddc", path: .railshot, persist-credentials: false}
       - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
         with: {artifact-ids: "${{ needs.loop.outputs.bundle_id }}", path: release-bundle, merge-multiple: true}
       - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
@@ -247,7 +247,7 @@ jobs:
       - name: Verify bundle and publish tested images
         env:
           BUNDLE_ARTIFACT_ID: ${{ needs.loop.outputs.bundle_id }}
-          PLATFORM_REF: 50b1128b6a649167eadc57e6651b5449f60352ef
+          PLATFORM_REF: 5aadda18d1d6ae60a3ab15dac45b33f28fb56ddc
         run: |
           set -euo pipefail
           pip install -q pyyaml jsonschema
