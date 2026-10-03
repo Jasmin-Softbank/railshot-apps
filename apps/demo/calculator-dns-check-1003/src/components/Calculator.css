@@ -1,0 +1,57 @@
+.calc {
+  padding: 1rem;
+}
+
+.calc__result {
+  height: 3rem;
+  text-align: end;
+  font-size: 2rem;
+  color: var(--body-font-color);
+}
+
+.calc__display {
+  height: 10rem;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 5px;
+  background-color: var(--display-bg-color);
+  text-align: end;
+  font-size: 1.5rem;
+  word-break: break-word;
+  color: var(--display-font-color);
+}
+
+.calc__pad {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem 0.75rem;
+}
+
+.calc__paditem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+  background-color: var(--btn-bg-color);
+  border: 1px solid var(--btn-border-color);
+  height: 4rem;
+  font-size: 1.5rem;
+  color: var(--body-font-color);
+  cursor: pointer;
+}
+
+.calc__paditem:active {
+  background-color: var(--btn-active-color);
+}
+
+.calc__paditem:nth-child(1),
+.calc__paditem:nth-child(2),
+.calc__paditem:nth-child(3),
+.calc__paditem:nth-child(4n) {
+  color: var(--primary-color);
+}
+
+.calc__paditem:last-child {
+  color: #ffffff;
+  background-color: var(--primary-color);
+}
