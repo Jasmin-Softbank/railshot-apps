@@ -5,28 +5,27 @@ import "./Calculator.css";
 
 function Calculator() {
   const { expression, result, operateCalc } = useCalculator();
-  const exDisplay = React.useRef() as React.MutableRefObject<HTMLElement>;
+  const exDisplay = React.useRef<HTMLSpanElement>(null);
 
-  const changeFontSize = () => {
-    const pNode = exDisplay.current.parentNode as HTMLElement;
-    const pWidth = pNode.offsetWidth;
-    const cWidth = exDisplay.current.offsetWidth;
-    const cFontSize = +window
-      .getComputedStyle(exDisplay.current)
-      .fontSize.slice(0, -2);
+  React.useEffect(() => {
+    const display = exDisplay.current;
+    const parent = display?.parentElement;
+    if (!display || !parent) return;
+
+    const pWidth = parent.offsetWidth;
+    const cWidth = display.offsetWidth;
+    const cFontSize = Number.parseFloat(
+      window.getComputedStyle(display).fontSize
+    );
 
     if (cWidth >= pWidth * 0.85 && cFontSize > 14) {
-      exDisplay.current.style.fontSize = `${cFontSize - 5}px`;
+      display.style.fontSize = `${cFontSize - 5}px`;
     }
 
     if (cWidth < pWidth * 0.5 && cFontSize < 24) {
-      exDisplay.current.style.fontSize = `${cFontSize + 5}px`;
+      display.style.fontSize = `${cFontSize + 5}px`;
     }
-  };
-
-  React.useEffect(() => {
-    changeFontSize();
-  }, [exDisplay.current?.offsetWidth]);
+  }, [expression]);
 
   return (
     <main className="calc">

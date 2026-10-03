@@ -8,7 +8,7 @@ export const calculate = (calStack: string[]) => {
     } else {
       const operator = el;
       const num2 = tempStack.pop() as number;
-      const num1 = tempStack.pop() || num2;
+      const num1 = tempStack.pop() ?? num2;
 
       tempStack.push(operate(num1, num2, operator));
     }
