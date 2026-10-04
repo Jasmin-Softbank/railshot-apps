@@ -1,0 +1,11 @@
+apiVersion: railshot/v0
+app: terminal
+services:
+  - name: web
+    build:
+      context: .
+      dockerfile: Dockerfile
+    port: 8080
+    health: /
+    route: /
+    size: S
