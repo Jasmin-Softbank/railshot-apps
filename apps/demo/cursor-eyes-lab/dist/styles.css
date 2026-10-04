@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Nanum+Myeongjo:wght@700;800&display=swap');
+
+:root { color-scheme: light; }
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  min-height: 100dvh;
+  overflow: hidden;
+  background: #ffd84d;
+  color: #132c2c;
+  cursor: crosshair;
+}
+.stage {
+  display: grid;
+  min-height: calc(100dvh - 52px);
+  place-content: center;
+  justify-items: center;
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+.eyebrow, footer, .hint {
+  font-family: "DM Mono", monospace;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+}
+.eyebrow { margin: 0 0 1.15rem; font-size: .68rem; font-weight: 500; }
+h1 {
+  margin: 0;
+  font-family: "Nanum Myeongjo", serif;
+  font-size: clamp(2.65rem, 7vw, 5.4rem);
+  font-weight: 800;
+  letter-spacing: -.09em;
+  line-height: 1;
+}
+h1 span { color: #ea5c35; }
+.intro { margin: 1.25rem 0 0; font: 500 clamp(.85rem, 2vw, 1.05rem)/1.75 "DM Mono", monospace; }
+.face { display: flex; gap: clamp(1.1rem, 4vw, 3.25rem); margin: clamp(2.8rem, 8vh, 5.75rem) 0 2.3rem; }
+.eye {
+  display: grid;
+  width: clamp(120px, 20vw, 220px);
+  aspect-ratio: .8;
+  place-items: center;
+  overflow: hidden;
+  border: clamp(5px, .75vw, 9px) solid #132c2c;
+  border-radius: 50%;
+  background: #fffef6;
+  box-shadow: 8px 9px 0 #ea5c35;
+}
+.iris {
+  position: relative;
+  width: 52%;
+  aspect-ratio: 1;
+  border: clamp(4px, .5vw, 6px) solid #132c2c;
+  border-radius: 50%;
+  background: #3f9b9b;
+  transition: transform 70ms linear;
+  will-change: transform;
+}
+.pupil { position: absolute; inset: 23%; border-radius: 50%; background: #132c2c; }
+.shine { position: absolute; top: 18%; left: 22%; width: 17%; aspect-ratio: 1; border-radius: 50%; background: #fffef6; }
+.hint { display: flex; align-items: center; gap: .55rem; margin: 0; font-size: .68rem; }
+.dot { width: .5rem; height: .5rem; border-radius: 50%; background: #ea5c35; animation: blink 1s infinite alternate; }
+footer { position: fixed; right: 1.25rem; bottom: 1.1rem; font-size: .54rem; }
+@keyframes blink { to { transform: scale(.35); opacity: .4; } }
+@media (max-width: 430px) { .face { gap: 1rem; } footer { left: 1.25rem; right: auto; } }
+@media (prefers-reduced-motion: reduce) { .iris { transition: none; } .dot { animation: none; } }
