@@ -1,0 +1,13 @@
+.git
+.env
+.env.*
+*.pem
+*.key
+node_modules
+.idea
+.vscode
+target
+build
+out
+*.class
+*.log
