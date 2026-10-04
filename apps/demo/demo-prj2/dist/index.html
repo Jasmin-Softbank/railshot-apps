@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0e1628" />
+  <meta name="description" content="브라우저에서만 동작하는 집중 세션 플래너" />
+  <title>Focus Pulse — 집중 세션 플래너</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#top" aria-label="Focus Pulse 홈"><span class="brand-mark">✦</span>FOCUS<br />PULSE</a>
+      <nav aria-label="주요 메뉴">
+        <a class="nav-link active" href="#top">오늘의 플랜 <span>01</span></a>
+        <a class="nav-link" href="#tasks">할 일 목록 <span id="taskNavCount">03</span></a>
+        <a class="nav-link" href="#insights">세션 인사이트 <span>↗</span></a>
+      </nav>
+      <div class="side-note"><span class="live-dot"></span> 브라우저에만 저장됩니다</div>
+    </aside>
+
+    <section class="content" id="top">
+      <header class="topbar">
+        <div><p class="overline" id="dateLabel"></p><h1>안녕하세요, <em>진기</em>님.</h1></div>
+        <button class="icon-button" id="themeToggle" type="button" aria-label="색상 테마 변경">◐</button>
+      </header>
+
+      <section class="hero-grid" aria-label="집중 타이머와 오늘의 진행 상황">
+        <article class="timer-card">
+          <div class="card-top"><span class="tag">DEEP WORK</span><button class="text-button" id="modeButton" type="button">25분 집중 ▾</button></div>
+          <div class="timer-wrap"><svg class="progress-ring" viewBox="0 0 220 220" aria-hidden="true"><circle class="ring-track" cx="110" cy="110" r="96"/><circle class="ring-value" id="ringValue" cx="110" cy="110" r="96"/></svg><div class="timer-value"><strong id="timeDisplay">25:00</strong><span id="timerStatus">준비 완료</span></div></div>
+          <div class="timer-controls"><button class="round-button secondary" id="resetButton" type="button" aria-label="타이머 초기화">↺</button><button class="start-button" id="startButton" type="button">세션 시작 <span>→</span></button></div>
+        </article>
+        <article class="goal-card">
+          <p class="overline">TODAY'S RHYTHM</p>
+          <div class="goal-number"><strong id="completedCount">2</strong><span>/ <span id="goalTotal">5</span> sessions</span></div>
+          <p class="goal-copy">오늘의 목표까지<br /><b id="remainingText">3번의 집중</b>이 남았어요.</p>
+          <div class="mini-bars" aria-label="주간 집중 세션"><span style="--h:30%"></span><span style="--h:55%"></span><span style="--h:42%"></span><span style="--h:76%"></span><span class="today" style="--h:90%"></span><span style="--h:25%"></span><span style="--h:18%"></span></div>
+        </article>
+      </section>
+
+      <section class="task-section" id="tasks">
+        <div class="section-heading"><div><p class="overline">YOUR NEXT MOVES</p><h2>오늘의 우선순위</h2></div><button class="add-task" id="openTaskDialog" type="button">+ 새 할 일</button></div>
+        <ul class="task-list" id="taskList" aria-live="polite"></ul>
+      </section>
+
+      <section class="insight-section" id="insights">
+        <div><p class="overline">LAST 7 DAYS</p><h2>집중 리듬</h2></div>
+        <div class="stats"><article><strong id="minuteStat">50</strong><span>집중한 시간 (분)</span></article><article><strong id="taskStat">1</strong><span>완료한 작업</span></article><article><strong>09:30</strong><span>가장 좋은 시작 시간</span></article></div>
+      </section>
+    </section>
+  </main>
+
+  <dialog id="taskDialog"><form method="dialog" id="taskForm"><div class="dialog-top"><h2>새 할 일</h2><button class="dialog-close" value="cancel" aria-label="닫기">×</button></div><label>작업 이름<input id="taskInput" name="title" required maxlength="60" placeholder="예: 발표 자료의 핵심 문장 다듬기" /></label><label>집중 시간<select id="taskDuration" name="duration"><option value="25">25분</option><option value="50">50분</option><option value="15">15분</option></select></label><button class="save-button" value="default">목록에 추가 →</button></form></dialog>
+  <script src="app.js"></script>
+</body>
+</html>
