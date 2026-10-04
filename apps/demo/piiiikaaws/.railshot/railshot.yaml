@@ -1,0 +1,13 @@
+apiVersion: railshot/v0
+app: piiiikaaws
+services:
+  - name: web
+    build:
+      context: .
+      dockerfile: Dockerfile
+    port: 8080
+    health: /
+    route: /
+    command: ["java", "src/Main.java"]
+    strategy: rolling
+    replicas: 1
