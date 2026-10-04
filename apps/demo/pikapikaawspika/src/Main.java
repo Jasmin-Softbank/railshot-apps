@@ -14,6 +14,42 @@ public class Main {
     private static final ConcurrentHashMap<String, Timer> TIMERS = new ConcurrentHashMap<>();
     private static String template;
     private static byte[] pikachu;
+    private static final double[] LATENCY_BUCKETS = {.005, .01, .025, .05, .1, .25, .5, 1, 2.5, 5, 10};
+    private static final long[] REQUESTS = new long[6];
+    private static final long[] LATENCIES = new long[LATENCY_BUCKETS.length];
+    private static long requestCount;
+    private static double requestSeconds;
+
+    private static synchronized void observe(int status, double seconds) {
+        REQUESTS[status >= 100 && status < 600 ? status / 100 : 5]++;
+        requestCount++;
+        requestSeconds += seconds;
+        for (int i = 0; i < LATENCY_BUCKETS.length; i++)
+            if (seconds <= LATENCY_BUCKETS[i]) LATENCIES[i]++;
+    }
+
+    private static synchronized byte[] metrics() {
+        StringBuilder text = new StringBuilder("# HELP railshot_http_requests_total Completed application requests excluding health checks.\n# TYPE railshot_http_requests_total counter\n");
+        for (int status = 1; status <= 5; status++)
+            text.append("railshot_http_requests_total{status_class=\"").append(status).append("xx\"} ").append(REQUESTS[status]).append('\n');
+        text.append("# HELP railshot_http_request_duration_seconds Application request duration in seconds.\n# TYPE railshot_http_request_duration_seconds histogram\n");
+        for (int i = 0; i < LATENCY_BUCKETS.length; i++)
+            text.append("railshot_http_request_duration_seconds_bucket{le=\"").append(LATENCY_BUCKETS[i]).append("\"} ").append(LATENCIES[i]).append('\n');
+        text.append("railshot_http_request_duration_seconds_bucket{le=\"+Inf\"} ").append(requestCount).append('\n');
+        text.append("railshot_http_request_duration_seconds_sum ").append(requestSeconds).append('\n');
+        text.append("railshot_http_request_duration_seconds_count ").append(requestCount).append('\n');
+        return text.toString().getBytes(StandardCharsets.UTF_8);
+    }
+
+    private static void measuredHandle(HttpExchange exchange) throws IOException {
+        if (exchange.getRequestURI().getPath().equals("/health")) {
+            send(exchange, 200, "text/plain", "ok\n".getBytes(StandardCharsets.UTF_8));
+            return;
+        }
+        long started = System.nanoTime();
+        try { handle(exchange); }
+        finally { observe(exchange.getResponseCode(), (System.nanoTime() - started) / 1_000_000_000.0); }
+    }
 
     static class Timer {
         long total = 300_000, remaining = total, deadline;
@@ -148,7 +184,15 @@ public class Main {
         template = Files.readString(Path.of("public/index.html"));
         pikachu = Files.readAllBytes(Path.of("public/pikachu.png"));
         HttpServer server = HttpServer.create(new InetSocketAddress(host, port), 0);
-        server.createContext("/", Main::handle);
+        server.createContext("/", Main::measuredHandle);
+        int metricsPort = Integer.parseInt(System.getenv().getOrDefault("METRICS_PORT", "9400"));
+        HttpServer metricsServer = HttpServer.create(new InetSocketAddress(host, metricsPort), 0);
+        metricsServer.createContext("/", exchange -> {
+            if (exchange.getRequestURI().getPath().equals("/metrics") && exchange.getRequestMethod().equals("GET"))
+                send(exchange, 200, "text/plain; version=0.0.4; charset=utf-8", metrics());
+            else send(exchange, 404, "text/plain", "Not found".getBytes(StandardCharsets.UTF_8));
+        });
+        metricsServer.start();
         server.start();
         System.out.println("피카츄 모래시계 수신 주소: " + host + ":" + port);
     }

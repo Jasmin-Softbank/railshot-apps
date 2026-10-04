@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: Dockerfile
     port: 8080
-    health: /pikachu.png
+    health: /health
     route: /
     command: ["java", "-cp", "/app/classes", "Main"]
     strategy: rolling
