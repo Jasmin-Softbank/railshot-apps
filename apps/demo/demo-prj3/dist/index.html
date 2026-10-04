@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#ffd84d" />
+    <meta name="description" content="커서를 따라보는 두 눈의 작은 인터랙티브 실험" />
+    <title>눈이 보고 있어요</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="stage" aria-labelledby="title">
+      <p class="eyebrow">INTERACTIVE MINI EXPERIMENT</p>
+      <h1 id="title">눈이 보고 있어요<span aria-hidden="true">.</span></h1>
+      <p class="intro">화면 어디든 움직여 보세요.<br />두 눈이 당신의 커서를 놓치지 않아요.</p>
+
+      <section class="face" aria-label="커서를 따라보는 두 눈">
+        <div class="eye" data-eye>
+          <div class="iris"><div class="pupil"></div><span class="shine"></span></div>
+        </div>
+        <div class="eye" data-eye>
+          <div class="iris"><div class="pupil"></div><span class="shine"></span></div>
+        </div>
+      </section>
+
+      <p class="hint"><span class="dot" aria-hidden="true"></span> 마우스를 움직여 보세요</p>
+    </main>
+    <footer>MADE TO FOLLOW YOUR EVERY MOVE</footer>
+    <script src="app.js"></script>
+  </body>
+</html>
