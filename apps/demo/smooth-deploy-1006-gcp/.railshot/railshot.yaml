@@ -1,9 +1,0 @@
-apiVersion: railshot/v0
-app: smooth-deploy-1006-gcp
-services:
-- name: web
-  build:
-    dockerfile: Dockerfile
-  port: 8080
-  health: /
-  route: /
